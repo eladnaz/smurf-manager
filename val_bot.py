@@ -39,7 +39,7 @@ async def gold_acc(ctx):
     else:
         await ctx.send(result)
 
-@bot.command(name='bronze')
+@bot.command(name='bronze',brief="1 game behind the most recent match")
 async def gold_acc(ctx):
     data = await getData()
     counter = 0
@@ -69,7 +69,7 @@ async def gold_acc(ctx):
     else:
         await ctx.send(result)
 
-@bot.command(name='all')
+@bot.command(name='all',brief="This bot will update the ranks every 6hrs. Ranks shown are")
 async def gold_acc(ctx):
     data = await getData()
     result = ""
@@ -128,7 +128,7 @@ async def dia_acc(ctx):
     else:
         await ctx.send(result)
 
-@bot.command(name="ign",brief="<command> <old_ign> <new_ign>")
+@bot.command(name="ign",brief="<command> <old_name#tag> <new_name#tag>")
 async def upd_ign(ctx,arg1,arg2):
     data = await getData()
     for i in range(len(data)):
@@ -182,7 +182,7 @@ async def add_acc(ctx,arg1,arg2,arg3):
     await writeData(data)
     await ctx.send("Account added")
 
-@bot.command(name="del",brief="<command> <ign>")
+@bot.command(name="del",brief="<command> <name#tag>")
 async def del_acc(ctx,arg1):
     data = await getData()
     new_data = []
