@@ -1,5 +1,6 @@
 # smurf-manager
 Personal project using discord bot to keep track of smurf accounts when playing with friends in Valorant.
+
 The bot keeps a simple database of the accounts through a textfile on a locally hosted server.
 
 A script uses Selenium to navigate and scrap for rank rating from a Valorant stat tracking website as a simple alternative instead of getting approval for the Valorant API
