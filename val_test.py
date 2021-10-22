@@ -34,22 +34,35 @@ for i in range(len(DATA)):
         )
         search_elem.send_keys(ign)
         search_elem.send_keys(Keys.RETURN)
+        
     finally:
+        '''do nothing'''
+    
+    elem_found = 0
+    try:
         comp_elem = WebDriverWait(driver,5).until(
             EC.presence_of_element_located((By.XPATH,"//span[text()='Competitive']"))
         )
         comp_elem.click()
-
-    try:
-        rank_elem = WebDriverWait(driver,5).until(
-            EC.presence_of_element_located((By.CLASS_NAME,"rating-entry__info"))
-        )
-        rank = rank_elem.find_element_by_class_name("value").text
     except:
-        rank = "Unrated"
-    finally:
-        new[i] = details[0] + ':' + details[1] + ':' + rank + ':' + details[3] + ':' + details[4]
+        print("id not found")
+        elem_found = 0
         driver.back()
+    finally:
+        elem_found = 1
+        
+    if(elem_found == 1):
+        try:
+            rank_elem = WebDriverWait(driver,5).until(
+                EC.presence_of_element_located((By.CLASS_NAME,"rating-entry__info"))
+            )
+            rank = rank_elem.find_element_by_class_name("value").text
+        except:
+            rank = "Unrated"
+        finally:
+            new[i] = details[0] + ':' + details[1] + ':' + rank + ':' + details[3] + ':' + details[4]
+            driver.back()
+            
 driver.close()
 writeData(new)
 driver.quit()
