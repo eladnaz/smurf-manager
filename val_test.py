@@ -38,7 +38,7 @@ for i in range(len(DATA)):
     finally:
         '''do nothing'''
     
-    elem_found = 0
+    elem_found = 1
     try:
         comp_elem = WebDriverWait(driver,5).until(
             EC.presence_of_element_located((By.XPATH,"//span[text()='Competitive']"))
@@ -48,8 +48,6 @@ for i in range(len(DATA)):
         print("id not found")
         elem_found = 0
         driver.back()
-    finally:
-        elem_found = 1
         
     if(elem_found == 1):
         try:
