@@ -40,7 +40,7 @@ async def gold_acc(ctx):
         await ctx.send(result)
 
 @bot.command(name='bronze',brief="1 game behind the most recent match")
-async def gold_acc(ctx):
+async def bronze_acc(ctx):
     data = await getData()
     counter = 0
     result = ""
@@ -55,7 +55,7 @@ async def gold_acc(ctx):
         await ctx.send(result)
 
 @bot.command(name='iron')
-async def gold_acc(ctx):
+async def iron_acc(ctx):
     data = await getData()
     counter = 0
     result = ""
@@ -70,7 +70,7 @@ async def gold_acc(ctx):
         await ctx.send(result)
 
 @bot.command(name='all',brief="This bot will update the ranks every 6hrs. Ranks shown are")
-async def gold_acc(ctx):
+async def all_acc(ctx):
     data = await getData()
     result = ""
     counter = 0

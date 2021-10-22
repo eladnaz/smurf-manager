@@ -45,6 +45,7 @@ for i in range(len(DATA)):
         )
         comp_elem.click()
     except:
+        new[i] = details[0] + ':' + details[1] + ':' + details[2] + ':' + details[3] + ':' + details[4]
         print("id not found")
         elem_found = 0
         driver.back()
