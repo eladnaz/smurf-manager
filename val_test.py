@@ -35,7 +35,10 @@ for i in range(len(DATA)):
         search_elem.send_keys(ign)
         search_elem.send_keys(Keys.RETURN)
     finally:
-        '''donothing'''
+        comp_elem = WebDriverWait(driver,5).until(
+            EC.presence_of_element_located((By.XPATH,"//span[text()='Competitive']"))
+        )
+        comp_elem.click()
 
     try:
         rank_elem = WebDriverWait(driver,5).until(
