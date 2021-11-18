@@ -3,9 +3,18 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import time
+import psutil
 import sys
 DATA = ["a","a"]
+
+
+
+def chrome_open(exename='chrome.exe'):
+    for proc in psutil.process_iter(['pid', 'name']):
+        # This will check if there exists any process running with executable name
+        if proc.info['name'] == exename:
+            return True
+    return False
 
 def getData():
     global DATA
@@ -21,6 +30,10 @@ def writeData(new):
         for i in range(len(DATA)):
             f.write(new[i] + "\n")
 
+if chrome_open():
+    for process in psutil.process_iter():
+        if process.name() == "chrome.exe":
+            process.kill()
 getData()
 driver = webdriver.Chrome("chromedriver.exe")
 driver.get("https://tracker.gg/valorant")
