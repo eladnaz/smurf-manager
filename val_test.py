@@ -35,7 +35,10 @@ if chrome_open():
         if process.name() == "chrome.exe":
             process.kill()
 getData()
-driver = webdriver.Chrome("chromedriver.exe")
+options = webdriver.ChromeOptions()
+options.add_argument('--ignore-certificate-errors')
+options.add_argument('--ignore-ssl-errors')
+driver = webdriver.Chrome(executable_path='chromedriver.exe',chrome_options=options)
 driver.get("https://tracker.gg/valorant")
 new = ['A'] * len(DATA)
 for i in range(len(DATA)):
